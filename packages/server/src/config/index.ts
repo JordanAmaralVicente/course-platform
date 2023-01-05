@@ -26,6 +26,7 @@ interface ServerConfig {
             migrations: string[];
         };
     };
+    jwtSecret: string;
 }
 
 export const serverConfig: ServerConfig = {
@@ -56,4 +57,5 @@ export const serverConfig: ServerConfig = {
             ],
         },
     },
+    jwtSecret: "QB5MQx1tskc6uzw2KZ",
 };
