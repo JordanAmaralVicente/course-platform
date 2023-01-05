@@ -1,0 +1,10 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "coveragePathIgnorePatterns": [
+    "databases/typeorm/entities",
+    "types",
+    "mocks"
+  ],
+  "modulePathIgnorePatterns": ["mocks"]
+}
