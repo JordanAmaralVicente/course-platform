@@ -5,7 +5,7 @@ import * as ContentController from "../controllers/content";
 
 const router = Router();
 
-router.get("/");
+router.get("/", ContentController.getContents);
 
 router.put(
     "/create-content",
