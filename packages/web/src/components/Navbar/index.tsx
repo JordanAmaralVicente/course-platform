@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 const OuterContainer = styled(Box)(({ theme }) => ({
   width: "100%",
-  background: "linear-gradient(90deg, #0059B2, #007FFF 120%)",
-  color: "white",
-  height: "56px",
+  background: "white",
+  color: "#38023B",
+  height: "64px",
   alignItems: "center",
   justifyContent: "space-between",
   display: "flex",
+
+  boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.2)",
 
   [theme.breakpoints.down("sm")]: {
     fontSize: "12px",
@@ -18,13 +20,13 @@ const OuterContainer = styled(Box)(({ theme }) => ({
 }));
 
 const CustomNavbarButton = styled(Button)(({ theme }) => ({
-  color: "white",
+  color: "#38023B",
   fontWeight: "bold",
   margin: "0 8px",
 
   "&:hover": {
     backgroundColor: "white",
-    color: "#0059B2",
+    color: "#A288E3",
   },
 
   [theme.breakpoints.down("sm")]: {
