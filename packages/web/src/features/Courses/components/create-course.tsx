@@ -27,10 +27,6 @@ export const CreateCourse = (): JSX.Element => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  if (user.role !== UserRole.TEACHER) {
-    return <></>;
-  }
-
   const handleOnClickCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -39,27 +35,33 @@ export const CreateCourse = (): JSX.Element => {
     setIsModalOpen(true);
   };
 
+  console.log(user);
+
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "flex-end",
-        }}
-      >
-        <CustomNavbarButton
-          variant="contained"
-          onClick={handleOnClickCreateCourse}
-        >
-          Cadastrar Curso
-        </CustomNavbarButton>
-      </Box>
-      <CreateCourseModal
-        isModalOpen={isModalOpen}
-        onCloseModal={handleOnClickCloseModal}
-      />
+      {user.role === UserRole.TEACHER && (
+        <>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "flex-end",
+            }}
+          >
+            <CustomNavbarButton
+              variant="contained"
+              onClick={handleOnClickCreateCourse}
+            >
+              Cadastrar Curso
+            </CustomNavbarButton>
+          </Box>
+          <CreateCourseModal
+            isModalOpen={isModalOpen}
+            onCloseModal={handleOnClickCloseModal}
+          />
+        </>
+      )}
     </>
   );
 };
