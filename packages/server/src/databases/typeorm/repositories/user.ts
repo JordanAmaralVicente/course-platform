@@ -1,3 +1,4 @@
+import { UserRole } from "../../../types/user-role";
 import { DataBaseSource } from "../config";
 import { User } from "../entities/user";
 
@@ -26,5 +27,17 @@ export default class UserRepository {
 
     static findByEmail(email: string) {
         return userRepositoryManager.findOneBy({ email });
+    }
+
+    static findAllStudents() {
+        return userRepositoryManager.findBy({
+            role: UserRole.STUDENT,
+        });
+    }
+
+    static findAllTeachers() {
+        return userRepositoryManager.findBy({
+            role: UserRole.TEACHER,
+        });
     }
 }
