@@ -3,11 +3,8 @@ import {
   Box,
   FormControl,
   FormControlLabel,
-  FormGroup,
-  MenuItem,
   Radio,
   RadioGroup,
-  Select,
   styled,
   TextField,
   Typography,
@@ -15,7 +12,6 @@ import {
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Gender, Genders } from "../../../../types/gender";
 import { UserRole, UserRoles } from "../../../../types/user-role";
 import { registerUser } from "../apis/create-user";
 import { CreateUserDTO, createUserValidation } from "../types";
@@ -47,20 +43,14 @@ export const Form = (): JSX.Element => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [userRole, setUserRole] = useState<UserRole>(UserRole.CLIENT);
+  const [userRole, setUserRole] = useState<UserRole>(UserRole.STUDENT);
   const navigate = useNavigate();
 
   const onSubmit = async (data: CreateUserDTO) => {
     setIsLoading(true);
     setErrorMessage(null);
 
-    const { age, ...rest } = data;
-
-    const parsedData: CreateUserDTO = {
-      age: Number(age),
-      userRole,
-      ...rest,
-    };
+    const parsedData = data as CreateUserDTO;
 
     try {
       await createUserValidation.validateAsync(parsedData);
@@ -114,47 +104,9 @@ export const Form = (): JSX.Element => {
           />
         </FormControl>
         <FormControl>
-          <CustomTextField {...register("telephone")} placeholder="Telephone" />
-        </FormControl>
-        <FormGroup>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-            }}
-          >
-            <FormControl sx={{ width: "40%" }}>
-              <TextField
-                {...register("age")}
-                type="number"
-                placeholder="Idade"
-              />
-            </FormControl>
-            <FormControl sx={{ marginLeft: "3px", width: "56%" }}>
-              <Select
-                {...register("gender")}
-                value={getValues("gender")}
-                onChange={(e) => setValue("gender", e.target.value as Gender)}
-                placeholder="Gênero"
-              >
-                {Genders.map((gender, idx) => {
-                  return (
-                    <MenuItem key={idx} value={gender.value}>
-                      {gender.label}
-                    </MenuItem>
-                  );
-                })}
-              </Select>
-            </FormControl>
-          </Box>
-        </FormGroup>
-
-        <FormControl>
           <RadioGroup
             value={userRole}
-            {...register("userRole")}
+            {...register("role")}
             sx={{
               display: "flex",
               flexDirection: "row",

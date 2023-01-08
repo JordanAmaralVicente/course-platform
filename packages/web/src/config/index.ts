@@ -6,6 +6,6 @@ interface AppConfig {
 
 export const appConfig: AppConfig = {
   api: {
-    url: "http://localhost:8080",
+    url: "http://localhost:8080/api",
   },
 };

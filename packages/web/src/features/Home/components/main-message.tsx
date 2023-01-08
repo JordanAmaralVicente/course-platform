@@ -41,8 +41,7 @@ export const MainMessage = () => {
           marginTop: "24px",
         }}
       >
-        Aqui, é possível conectar os melhores dos arquitetos ao melhores
-        clientes.
+        Plataforma utilizada para unir professores e alunos.
       </Typography>
       <Box
         sx={{
