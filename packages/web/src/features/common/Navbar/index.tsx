@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../../../components";
-import { useAuth } from "../../../contexts/auth";
+import { useAuth } from "../../../hooks/use-auth";
 
 export const MountedNavbar = () => {
   const { logout } = useAuth();

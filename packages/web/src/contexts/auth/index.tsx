@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { axiosApi } from "../../utils/axios";
 import { doLogin, verifyToken } from "./api";
 import { reducer } from "./reducer";
@@ -13,13 +13,11 @@ const initialAuthState: AuthState = {
   error: null,
 };
 
-const AuthContext = createContext<AuthContextValue>({
+export const AuthContext = createContext<AuthContextValue>({
   ...initialAuthState,
   login: () => Promise.resolve(),
   logout: () => Promise.resolve(),
 });
-
-export const useAuth = (): AuthContextValue => useContext(AuthContext);
 
 const setSession = (apiAccessToken: string) => {
   if (apiAccessToken) {
