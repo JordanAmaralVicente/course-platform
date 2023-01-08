@@ -4,6 +4,7 @@ import { authenticationMiddleware } from "../middlewares/authentication-middlewa
 import { corsMiddleware } from "../middlewares/cors";
 
 import answerRouter from "./answer";
+import authRouter from "./auth";
 import contentRouter from "./content";
 import questionRouter from "./question";
 import userRouter from "./user";
@@ -14,6 +15,8 @@ router.use(corsMiddleware);
 router.use("/answer", authenticationMiddleware, answerRouter);
 router.use("/content", authenticationMiddleware, contentRouter);
 router.use("/question", authenticationMiddleware, questionRouter);
+
+router.use(authRouter);
 
 router.use("/user/register");
 
