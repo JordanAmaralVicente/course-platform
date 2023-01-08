@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Guest } from "../components";
+import { Autheticated, Guest } from "../components";
 
 import { LoginPage } from "../features/Auth/Login";
 import { RegisterPage } from "../features/Auth/Register";
+import { CoursesPage } from "../features/Courses";
 import { HomePage } from "../features/Home";
 
 export const router = createBrowserRouter([
@@ -24,6 +25,14 @@ export const router = createBrowserRouter([
       <Guest>
         <LoginPage />
       </Guest>
+    ),
+  },
+  {
+    path: "/cursos",
+    element: (
+      <Autheticated>
+        <CoursesPage />
+      </Autheticated>
     ),
   },
 ]);

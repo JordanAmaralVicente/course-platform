@@ -10,7 +10,7 @@ export const Guest = (props: GuestProps): JSX.Element => {
   const { isAuthenticated } = useAuth();
 
   if (isAuthenticated) {
-    return <Navigate to="/lista-servicos" />;
+    return <Navigate to="/cursos" />;
   }
 
   return <>{props.children}</>;

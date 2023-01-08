@@ -10,12 +10,8 @@ export const MountedNavbar = () => {
     <Navbar
       linkButtons={[
         {
-          label: "Lista de Arquitetos",
-          link: "/lista-arquitetos",
-        },
-        {
-          label: "Lista de Serviços",
-          link: "/lista-servicos",
+          label: "Lista de Cursos",
+          link: "/cursos",
         },
       ]}
       startButton={{
