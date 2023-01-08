@@ -12,7 +12,7 @@ import {
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { UserRole, UserRoles } from "../../../../types/user-role";
+import { UserRoles } from "../../../../types/user-role";
 import { registerUser } from "../apis/create-user";
 import { CreateUserDTO, createUserValidation } from "../types";
 
@@ -38,12 +38,10 @@ const CustomTextField = styled(TextField)(() => ({
 }));
 
 export const Form = (): JSX.Element => {
-  const { register, handleSubmit, setValue, getValues } =
-    useForm<CreateUserDTO>();
+  const { register, handleSubmit, setValue } = useForm<CreateUserDTO>();
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [userRole, setUserRole] = useState<UserRole>(UserRole.STUDENT);
   const navigate = useNavigate();
 
   const onSubmit = async (data: CreateUserDTO) => {
@@ -51,6 +49,7 @@ export const Form = (): JSX.Element => {
     setErrorMessage(null);
 
     const parsedData = data as CreateUserDTO;
+    console.log(parsedData);
 
     try {
       await createUserValidation.validateAsync(parsedData);
@@ -105,16 +104,12 @@ export const Form = (): JSX.Element => {
         </FormControl>
         <FormControl>
           <RadioGroup
-            value={userRole}
             {...register("role")}
             sx={{
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "center",
-            }}
-            onChange={(e) => {
-              setUserRole(e.target.value as UserRole);
             }}
           >
             {UserRoles.map((role, idx) => {
