@@ -12,14 +12,11 @@ import userRouter from "./user";
 const router = Router();
 
 router.use(corsMiddleware);
+
+router.use("/auth", authRouter);
 router.use("/answer", authenticationMiddleware, answerRouter);
 router.use("/content", authenticationMiddleware, contentRouter);
 router.use("/question", authenticationMiddleware, questionRouter);
-
-router.use(authRouter);
-
-router.use("/user/register");
-
 router.use("/user", authenticationMiddleware, userRouter);
 
 export default router;
