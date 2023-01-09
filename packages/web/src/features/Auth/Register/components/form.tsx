@@ -49,7 +49,6 @@ export const Form = (): JSX.Element => {
     setErrorMessage(null);
 
     const parsedData = data as CreateUserDTO;
-    console.log(parsedData);
 
     try {
       await createUserValidation.validateAsync(parsedData);

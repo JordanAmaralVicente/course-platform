@@ -1,6 +1,6 @@
 import { Box, Button, styled } from "@mui/material";
 import { useSnackbar } from "notistack";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../../hooks/use-auth";
 import { Content } from "../../../types/content";
 import { UserRole } from "../../../types/user-role";
@@ -52,10 +52,6 @@ export const CreateCourse = (): JSX.Element => {
 
     setIsModalOpen(false);
   };
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <>

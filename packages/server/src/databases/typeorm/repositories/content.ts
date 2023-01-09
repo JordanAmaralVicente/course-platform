@@ -30,9 +30,7 @@ export default class ContentRepository {
     }
 
     static findById(id: string) {
-        console.log(id);
-
-        return contentRepositoryManager.findOne({
+        return contentRepositoryManager.find({
             select: {
                 id: true,
                 duration: true,
