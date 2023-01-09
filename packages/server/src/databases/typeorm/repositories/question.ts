@@ -31,13 +31,6 @@ export default class QuestionRepository {
 
     static findByContentId(contentId: string) {
         return questionRepositoryManager.find({
-            select: {
-                content: {
-                    teacher: {
-                        password: false,
-                    },
-                },
-            },
             where: {
                 content: {
                     id: contentId,

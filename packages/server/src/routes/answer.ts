@@ -5,7 +5,7 @@ import * as AnswerController from "../controllers/answers";
 
 const router = Router();
 
-router.get("/questionId", AnswerController.getAnswerByQuestion);
+router.get("/:questionId", AnswerController.getAnswerByQuestion);
 router.put(
     "/register",
     teacherAuthorizationMiddleware,

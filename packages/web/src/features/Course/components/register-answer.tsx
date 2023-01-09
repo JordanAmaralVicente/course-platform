@@ -4,7 +4,7 @@ import { useSnackbar } from "notistack";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../hooks/use-auth";
-import { makeQuestion } from "../api/make-question";
+import { registerAnswer } from "../api/register-answer";
 
 const CustomTextField = styled(TextField)(() => ({
   margin: "6px",
@@ -30,12 +30,12 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 interface MakeQuestionModalProps {
-  contentId: string;
+  questionId: string;
   isModalOpen: boolean;
   onCloseModal: () => void;
 }
 
-export const MakeQuestionModal = (
+export const RegisterAnswerModal = (
   props: MakeQuestionModalProps
 ): JSX.Element => {
   const {
@@ -55,18 +55,13 @@ export const MakeQuestionModal = (
     clearErrors();
 
     try {
-      await makeQuestion({
-        text: data.text,
-        contentId: props.contentId,
-        studentId: user.id,
-      });
+      await registerAnswer(data.text, user.id, props.questionId);
 
-      enqueueSnackbar("Pergunta cadastrada com sucesso!", {
+      enqueueSnackbar("Sua resposta cadastrada com sucesso!", {
         variant: "success",
       });
 
       reset();
-      props.onCloseModal();
     } catch (error: any) {
       let message = "Não foi possível realizar a ação";
 
@@ -111,7 +106,7 @@ export const MakeQuestionModal = (
             <FormControl>
               <CustomTextField
                 {...register("text")}
-                placeholder="Digite aqui sua pergunta"
+                placeholder="Digite aqui sua resposta"
               />
             </FormControl>
             <LoadingButton

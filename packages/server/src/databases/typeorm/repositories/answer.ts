@@ -25,7 +25,7 @@ export default class AnswerRepository {
     }
 
     static findByQuestionId(questionId: string) {
-        return answerRepositoryManager.find({
+        return answerRepositoryManager.findOne({
             where: {
                 question: {
                     id: questionId,
