@@ -1,10 +1,10 @@
 import { ArrowBack } from "@mui/icons-material";
 import { Box, Button, styled } from "@mui/material";
-import { useSnackbar } from "notistack";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/use-auth";
 import { UserRole } from "../../../types/user-role";
+import { MakeQuestionModal } from "./make-questiont";
 
 const CustomButton = styled(Button)(({ theme }) => ({
   fontWeight: "bold",
@@ -24,11 +24,16 @@ const CustomButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export const FunctionalitiesContainer = (): JSX.Element => {
+interface FunctionalitiesContainerProps {
+  contentId: string;
+}
+
+export const FunctionalitiesContainer = (
+  props: FunctionalitiesContainerProps
+): JSX.Element => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  const { enqueueSnackbar } = useSnackbar();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOnClickCloseModal = () => {
@@ -64,6 +69,11 @@ export const FunctionalitiesContainer = (): JSX.Element => {
           </CustomButton>
         )}
       </Box>
+      <MakeQuestionModal
+        contentId={props.contentId}
+        isModalOpen={isModalOpen}
+        onCloseModal={handleOnClickCloseModal}
+      />
     </>
   );
 };

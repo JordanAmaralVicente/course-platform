@@ -1,5 +1,6 @@
 import {
   Paper,
+  styled,
   Table as UITable,
   TableBody,
   TableCell,
@@ -8,6 +9,7 @@ import {
   TableRow,
   Tooltip,
 } from "@mui/material";
+import { tableCellClasses } from "@mui/material/TableCell";
 import { ReactNode } from "react";
 
 interface Column {
@@ -27,6 +29,18 @@ interface TableProps {
   actions?: Action[];
 }
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: "#38023B",
+    color: "#ffffff",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
 export const Table = (props: TableProps): JSX.Element => {
   return (
     <TableContainer component={Paper}>
@@ -34,10 +48,12 @@ export const Table = (props: TableProps): JSX.Element => {
         <TableHead>
           <TableRow>
             {props?.columns?.map((column, idx) => (
-              <TableCell key={idx}>{column.label}</TableCell>
+              <StyledTableCell key={idx}>{column.label}</StyledTableCell>
             ))}
             {props?.actions?.map((_, idx) => (
-              <TableCell key={props?.columns.length + idx}></TableCell>
+              <StyledTableCell
+                key={props?.columns.length + idx}
+              ></StyledTableCell>
             ))}
           </TableRow>
         </TableHead>
@@ -46,12 +62,14 @@ export const Table = (props: TableProps): JSX.Element => {
             return (
               <TableRow key={row.id}>
                 {props.columns.map((column, idx) => (
-                  <TableCell key={row.id + idx}>{row[column.attr]}</TableCell>
+                  <StyledTableCell key={row.id + idx}>
+                    {row[column.attr]}
+                  </StyledTableCell>
                 ))}
                 {!!props.actions && (
                   <>
                     {props.actions.map((action, idx) => (
-                      <TableCell
+                      <StyledTableCell
                         key={idx}
                         onClick={() => {
                           action.onClick(row.id);
@@ -61,7 +79,7 @@ export const Table = (props: TableProps): JSX.Element => {
                         <Tooltip title={action.tooltip}>
                           <div>{action.actionNode}</div>
                         </Tooltip>
-                      </TableCell>
+                      </StyledTableCell>
                     ))}
                   </>
                 )}
