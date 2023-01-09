@@ -4,7 +4,7 @@ import { useAuth } from "../../../hooks/use-auth";
 import { UserRole } from "../../../types/user-role";
 import { CreateCourseModal } from "./create-course-modal";
 
-const CustomNavbarButton = styled(Button)(({ theme }) => ({
+const CustomButton = styled(Button)(({ theme }) => ({
   fontWeight: "bold",
   margin: "0 8px",
   backgroundColor: "#38023B",
@@ -49,12 +49,12 @@ export const CreateCourse = (): JSX.Element => {
               justifyContent: "flex-end",
             }}
           >
-            <CustomNavbarButton
+            <CustomButton
               variant="contained"
               onClick={handleOnClickCreateCourse}
             >
               Cadastrar Curso
-            </CustomNavbarButton>
+            </CustomButton>
           </Box>
           <CreateCourseModal
             isModalOpen={isModalOpen}

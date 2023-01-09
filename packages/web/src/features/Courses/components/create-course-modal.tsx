@@ -102,7 +102,16 @@ export const CreateCourseModal = (
               loading={isLoading}
               type="submit"
               variant="contained"
-              sx={{ margin: "6px" }}
+              sx={{
+                margin: "6px",
+                fontWeight: "bold",
+                backgroundColor: "#38023B",
+                color: "white",
+
+                "&:hover": {
+                  backgroundColor: "#A288E3",
+                },
+              }}
             >
               Cadastrar curso
             </LoadingButton>
