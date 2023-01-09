@@ -21,11 +21,23 @@ export default class QuestionRepository {
     }
 
     static findById(id: string) {
-        return questionRepositoryManager.findOneBy({ id });
+        return questionRepositoryManager.findOne({
+            where: {
+                id,
+            },
+            relations: ["content", "content.teacher"],
+        });
     }
 
     static findByContentId(contentId: string) {
         return questionRepositoryManager.find({
+            select: {
+                content: {
+                    teacher: {
+                        password: false,
+                    },
+                },
+            },
             where: {
                 content: {
                     id: contentId,

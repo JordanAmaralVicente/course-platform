@@ -11,7 +11,7 @@ export async function registerController(req: Request, res: Response) {
         return res.status(HTTP_STATUSES.BAD_REQUEST).json(error);
     }
 
-    const user = await registerUser(req.body);
+    const user = await registerUser(value);
 
     if (!user) {
         return res
