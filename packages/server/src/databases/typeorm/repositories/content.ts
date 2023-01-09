@@ -5,7 +5,16 @@ const contentRepositoryManager = DataBaseSource.getRepository(Content);
 
 export default class ContentRepository {
     static findAll() {
-        return contentRepositoryManager.find();
+        return contentRepositoryManager.find({
+            select: {
+                students: false,
+                teacher: {
+                    id: true,
+                    name: true,
+                },
+            },
+            relations: ["teacher"],
+        });
     }
 
     static save(content: Partial<Content>) {
