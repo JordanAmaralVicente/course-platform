@@ -1,16 +1,7 @@
 import { LoadingButton } from "@mui/lab";
 import { Box, FormControl, Modal, styled, TextField } from "@mui/material";
-import { useSnackbar } from "notistack";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../../hooks/use-auth";
-import { createCourse } from "../api/create-course";
-import { CreateCourseDTO } from "../types";
-
-interface CreateCourseModalProps {
-  isModalOpen: boolean;
-  onCloseModal: () => void;
-}
+import { Content } from "../../../types/content";
 
 const CustomTextField = styled(TextField)(() => ({
   margin: "6px",
@@ -35,32 +26,26 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 
+interface CreateCourseModalProps {
+  content?: Content;
+  isLoading?: boolean;
+  isEditing?: boolean;
+  isModalOpen: boolean;
+  onCloseModal: () => void;
+  onSubmit: (data: Partial<Content>) => Promise<void>;
+  buttonLabel: string;
+}
+
 export const CreateCourseModal = (
   props: CreateCourseModalProps
 ): JSX.Element => {
-  const { register, handleSubmit, reset } = useForm<CreateCourseDTO>();
-  const [isLoading, setIsLoading] = useState(false);
-  const { enqueueSnackbar } = useSnackbar();
-  const { user } = useAuth();
+  const { register, handleSubmit, reset } = useForm<Partial<Content>>({
+    values: props.content,
+  });
 
-  const handleOnSubmitForm = async (data: CreateCourseDTO) => {
-    setIsLoading(true);
-
-    try {
-      await createCourse(user.id, data);
-      enqueueSnackbar("Conteúdo cadastrado com sucesso!", {
-        variant: "success",
-      });
-
-      reset();
-      props.onCloseModal();
-    } catch (error) {
-      enqueueSnackbar("Não foi possível cadastrar o conteúdo", {
-        variant: "error",
-      });
-    }
-
-    setIsLoading(false);
+  const handleOnSubmitForm = async (data: Partial<Content>) => {
+    props.onSubmit(data);
+    reset();
   };
 
   return (
@@ -99,7 +84,7 @@ export const CreateCourseModal = (
               />
             </FormControl>
             <LoadingButton
-              loading={isLoading}
+              loading={props.isLoading}
               type="submit"
               variant="contained"
               sx={{
@@ -113,7 +98,7 @@ export const CreateCourseModal = (
                 },
               }}
             >
-              Cadastrar curso
+              {props.buttonLabel}
             </LoadingButton>
           </form>
         </Box>

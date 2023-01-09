@@ -1,6 +1,9 @@
 import { Grid } from "@mui/material";
+import { useEffect, useState } from "react";
 import { EmptyResult } from "../../../components/EmptyResult";
+import { useAuth } from "../../../hooks/use-auth";
 import { Content } from "../../../types/content";
+import { ContentCardAction } from "../types";
 import { ContentCard } from "./content-card";
 
 interface ContentsGridProps {
@@ -8,6 +11,11 @@ interface ContentsGridProps {
 }
 
 export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
+  const { user } = useAuth();
+  const [actions, setActions] = useState<ContentCardAction[]>([]);
+
+  useEffect(() => {}, [user]);
+
   return (
     <>
       {!props?.contents?.length && (

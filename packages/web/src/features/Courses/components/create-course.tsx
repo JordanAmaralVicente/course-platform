@@ -1,7 +1,10 @@
 import { Box, Button, styled } from "@mui/material";
-import { useState } from "react";
+import { useSnackbar } from "notistack";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../../hooks/use-auth";
+import { Content } from "../../../types/content";
 import { UserRole } from "../../../types/user-role";
+import { createCourse } from "../api/create-course";
 import { CreateCourseModal } from "./create-course-modal";
 
 const CustomButton = styled(Button)(({ theme }) => ({
@@ -24,7 +27,7 @@ const CustomButton = styled(Button)(({ theme }) => ({
 
 export const CreateCourse = (): JSX.Element => {
   const { user } = useAuth();
-
+  const { enqueueSnackbar } = useSnackbar();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOnClickCloseModal = () => {
@@ -35,11 +38,28 @@ export const CreateCourse = (): JSX.Element => {
     setIsModalOpen(true);
   };
 
-  console.log(user);
+  const handleOnClickSubmit = async (data: Partial<Content>) => {
+    try {
+      await createCourse(user.id, data);
+      enqueueSnackbar("Conteúdo cadastrado com sucesso!", {
+        variant: "success",
+      });
+    } catch (error) {
+      enqueueSnackbar("Não foi possível cadastrar o conteúdo", {
+        variant: "error",
+      });
+    }
+
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
     <>
-      {user.role === UserRole.TEACHER && (
+      {user?.role === UserRole.TEACHER && (
         <>
           <Box
             sx={{
@@ -59,6 +79,8 @@ export const CreateCourse = (): JSX.Element => {
           <CreateCourseModal
             isModalOpen={isModalOpen}
             onCloseModal={handleOnClickCloseModal}
+            onSubmit={handleOnClickSubmit}
+            buttonLabel="Cadastrar conteúdo"
           />
         </>
       )}

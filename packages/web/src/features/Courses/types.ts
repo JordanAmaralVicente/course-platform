@@ -1,4 +1,5 @@
-export interface CreateCourseDTO {
-  title: string;
-  duration: number;
+import { ReactNode } from "react";
+
+export interface ContentCardAction {
+  element: ReactNode;
 }
