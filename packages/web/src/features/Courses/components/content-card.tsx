@@ -39,7 +39,7 @@ export const ContentCard = (props: ContentCardProps): JSX.Element => {
       >
         {props.actions?.map((action, index) => (
           <Tooltip key={index} title={action.label}>
-            <IconButton>{action.element}</IconButton>
+            <IconButton onClick={action.onClick}>{action.element}</IconButton>
           </Tooltip>
         ))}
       </Box>

@@ -1,5 +1,6 @@
 import { Delete, Edit, RemoveRedEye } from "@mui/icons-material";
 import { Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { EmptyResult } from "../../../components/EmptyResult";
 import { useAuth } from "../../../hooks/use-auth";
 import { Content } from "../../../types/content";
@@ -12,6 +13,7 @@ interface ContentsGridProps {
 
 export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -38,6 +40,9 @@ export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
       {
         element: <RemoveRedEye />,
         label: "Visualizar",
+        onClick: () => {
+          navigate(`/curso/${content.id}`);
+        },
       },
     ];
 
@@ -46,10 +51,12 @@ export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
         {
           element: <Edit />,
           label: "Editar",
+          onClick: () => {},
         },
         {
           element: <Delete />,
           label: "Deletar",
+          onClick: () => {},
         },
       ];
 

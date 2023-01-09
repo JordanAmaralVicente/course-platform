@@ -30,6 +30,26 @@ export default class ContentRepository {
     }
 
     static findById(id: string) {
-        return contentRepositoryManager.findOneBy({ id });
+        console.log(id);
+
+        return contentRepositoryManager.findOne({
+            select: {
+                id: true,
+                duration: true,
+                title: true,
+                students: {
+                    email: true,
+                },
+                teacher: {
+                    id: true,
+                    name: true,
+                    email: true,
+                },
+            },
+            where: {
+                id,
+            },
+            relations: ["teacher", "students"],
+        });
     }
 }
