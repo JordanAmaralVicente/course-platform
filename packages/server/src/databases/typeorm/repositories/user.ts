@@ -25,6 +25,15 @@ export default class UserRepository {
         return userRepositoryManager.findOneByOrFail({ id });
     }
 
+    static findByIdWithRelations(id: string) {
+        return userRepositoryManager.findOneOrFail({
+            where: {
+                id,
+            },
+            relations: ["studentQuestions", "studentQuestions.content"],
+        });
+    }
+
     static findByEmail(email: string) {
         return userRepositoryManager.findOneBy({ email });
     }

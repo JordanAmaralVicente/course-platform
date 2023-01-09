@@ -23,4 +23,14 @@ export default class QuestionRepository {
     static findById(id: string) {
         return questionRepositoryManager.findOneBy({ id });
     }
+
+    static findByContentId(contentId: string) {
+        return questionRepositoryManager.find({
+            where: {
+                content: {
+                    id: contentId,
+                },
+            },
+        });
+    }
 }
