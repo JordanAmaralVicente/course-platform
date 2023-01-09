@@ -1,19 +1,22 @@
 import { Request, Response } from "express";
 import { HTTP_STATUSES } from "../../types";
 import { getUpdatedUserInfo } from "../../usecases/auth/get-updated-user-info";
-import { verifyJWT } from "../../utils/jwt";
+import { mountErrorObject } from "../../utils";
+import { parseAuthTokenAndVerify } from "../../utils/jwt";
 
 export async function verifyAndUpdateUserInfoController(
     req: Request,
     res: Response,
 ) {
     const accessToken = req.headers.authorization;
+    const { payload } = parseAuthTokenAndVerify(accessToken);
 
-    const { payload } = verifyJWT(accessToken);
-
-    const user = await getUpdatedUserInfo(payload.id);
-
-    const responseStatus = user ? HTTP_STATUSES.OK : HTTP_STATUSES.BAD_REQUEST;
-
-    return res.status(responseStatus).json({ user });
+    try {
+        const user = await getUpdatedUserInfo(payload.id);
+        return res.json({ user });
+    } catch (error) {
+        return res
+            .status(HTTP_STATUSES.BAD_REQUEST)
+            .json(mountErrorObject("Couldn't find user"));
+    }
 }

@@ -30,3 +30,9 @@ export function verifyJWT(token: string, options?: VerifyOptions): TokenData {
         };
     }
 }
+
+export function parseAuthTokenAndVerify(token: string) {
+    const jwtToken = token.split("Bearer ")[1];
+
+    return verifyJWT(jwtToken);
+}

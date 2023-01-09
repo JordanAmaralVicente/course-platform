@@ -22,7 +22,7 @@ export default class UserRepository {
     }
 
     static findById(id: string) {
-        return userRepositoryManager.findOneBy({ id });
+        return userRepositoryManager.findOneByOrFail({ id });
     }
 
     static findByEmail(email: string) {
