@@ -1,10 +1,11 @@
 import { Box, styled } from "@mui/material";
 
 export const TerminalOuterContainer = styled(Box)(() => ({
-  margin: "64px 32px",
+  margin: "64px 32px 0",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  paddingBottom: "64px",
 }));
 
 export const TerminalInnerContainer = styled(Box)(() => ({
