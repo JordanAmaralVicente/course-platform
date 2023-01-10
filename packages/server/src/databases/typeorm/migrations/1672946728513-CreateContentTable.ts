@@ -23,7 +23,7 @@ export class CreateContentTable1672946728513 implements MigrationInterface {
                     },
                     {
                         name: "duration",
-                        type: "tinyint",
+                        type: "int",
                         isNullable: false,
                     },
                     {
