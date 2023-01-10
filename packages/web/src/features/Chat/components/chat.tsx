@@ -22,7 +22,7 @@ export const Chat = (): JSX.Element => {
 
     const newMessages: Message[] = [
       ...messages,
-      { message: text, type: "sent", userName: user.name },
+      { message: text, type: "sent", userName: user.name, userRole: user.role },
     ];
 
     setMessages(newMessages);
@@ -41,6 +41,7 @@ export const Chat = (): JSX.Element => {
         message: payload.message,
         type: "received",
         userName: payload.userName,
+        userRole: payload.userRole,
       });
 
       setMessages(newMessages);

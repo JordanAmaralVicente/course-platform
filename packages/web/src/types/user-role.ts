@@ -13,3 +13,8 @@ export const UserRoles = [
     label: "Estudante",
   },
 ];
+
+export const UserRoleLabelMap = new Map<UserRole, string>([
+  [UserRole.STUDENT, "Estudante"],
+  [UserRole.TEACHER, "Professor"],
+]);
