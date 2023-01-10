@@ -17,7 +17,7 @@ interface ContentsGridProps {
 export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const [paginatedContents, setPaginatedContents] = useState<Content[]>();
+  const [paginatedContents, setPaginatedContents] = useState<Content[]>([]);
   const [numberOfPages, setNumberOfPages] = useState(0);
 
   // NOTE: its index-1 based
@@ -33,7 +33,7 @@ export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
   }
 
   useEffect(() => {
-    if (props.contents.length) {
+    if (props?.contents?.length) {
       const pages = Math.ceil(props.contents.length / MAX_CONTENTS_PER_PAGE);
 
       setNumberOfPages(pages);
@@ -58,15 +58,17 @@ export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
           })}
         </Grid>
       )}
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Pagination
-          count={numberOfPages}
-          color="secondary"
-          onChange={(_, selectedPage: number) => {
-            paginateContents(selectedPage);
-          }}
-        />
-      </Box>
+      {!!props?.contents?.length && (
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Pagination
+            count={numberOfPages}
+            color="secondary"
+            onChange={(_, selectedPage: number) => {
+              paginateContents(selectedPage);
+            }}
+          />
+        </Box>
+      )}
     </>
   );
 
