@@ -27,12 +27,6 @@ export class Content {
     @ManyToMany(() => User, (user) => user.studentContents)
     @JoinTable({
         name: "contents_users",
-        joinColumn: {
-            name: "content_fk",
-        },
-        inverseJoinColumn: {
-            name: "user_fk",
-        },
     })
     students?: User[];
 }

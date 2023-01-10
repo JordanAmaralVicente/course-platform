@@ -15,8 +15,8 @@ export async function registerController(req: Request, res: Response) {
 
     if (!user) {
         return res
-            .status(HTTP_STATUSES.BAD_REQUEST)
-            .json(mountErrorObject("Couldn't do login"));
+            .status(HTTP_STATUSES.INTERNAL_SERVER_ERROR)
+            .json(mountErrorObject("Não foi possível registrar o usuário"));
     }
 
     return res.status(HTTP_STATUSES.CREATED).json({

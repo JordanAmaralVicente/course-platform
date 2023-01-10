@@ -39,15 +39,9 @@ export class User {
     @OneToMany(() => Question, (question) => question.student)
     studentQuestions?: Question[];
 
-    @ManyToMany(() => Content)
+    @ManyToMany(() => Content, (content) => content.students)
     @JoinTable({
         name: "contents_users",
-        joinColumn: {
-            name: "user_fk",
-        },
-        inverseJoinColumn: {
-            name: "content_fk",
-        },
     })
     studentContents?: Content[];
 }

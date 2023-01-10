@@ -9,8 +9,10 @@ export interface CreateUserDTO {
 }
 
 export const createUserValidation = Joi.object({
-  name: Joi.string(),
-  email: Joi.string().email({ tlds: { allow: false } }),
-  password: Joi.string(),
-  role: Joi.string(),
+  name: Joi.string().required(),
+  email: Joi.string()
+    .email({ tlds: { allow: false } })
+    .required(),
+  password: Joi.string().required(),
+  role: Joi.string().required(),
 });
