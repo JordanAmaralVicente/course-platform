@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Autheticated, Guest } from "../components";
+import { Autheticated, Guest, TeacherGuard } from "../components";
 
 import { LoginPage } from "../features/Auth/Login";
 import { RegisterPage } from "../features/Auth/Register";
@@ -16,9 +16,11 @@ export const router = createBrowserRouter([
   {
     path: "/cadastro",
     element: (
-      <Guest>
-        <RegisterPage />
-      </Guest>
+      <Autheticated>
+        <TeacherGuard>
+          <RegisterPage />
+        </TeacherGuard>
+      </Autheticated>
     ),
   },
   {

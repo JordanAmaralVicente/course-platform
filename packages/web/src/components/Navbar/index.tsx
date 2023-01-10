@@ -37,7 +37,7 @@ const CustomNavbarButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-interface LinkProps {
+export interface LinkProps {
   link: string;
   label: string;
 }

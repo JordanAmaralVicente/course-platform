@@ -88,7 +88,7 @@ export const Form = (): JSX.Element => {
         }}
         variant="h4"
       >
-        Registre-se
+        Ficha de cadastro
       </Typography>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -140,7 +140,7 @@ export const Form = (): JSX.Element => {
           loading={isLoading}
           type="submit"
           variant="contained"
-          sx={{ margin: "6px" }}
+          sx={{ margin: "6px", backgroundColor: "#38023B" }}
         >
           Cadastrar
         </LoadingButton>

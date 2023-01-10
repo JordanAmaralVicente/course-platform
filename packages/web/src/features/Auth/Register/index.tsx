@@ -1,4 +1,5 @@
 import { Box, styled } from "@mui/material";
+import { MountedNavbar } from "../../common";
 import { Form } from "./components";
 
 export const OuterPageContainer = styled(Box)(({ theme }) => ({
@@ -16,8 +17,11 @@ export const OuterPageContainer = styled(Box)(({ theme }) => ({
 
 export function RegisterPage(): JSX.Element {
   return (
-    <OuterPageContainer>
-      <Form />
-    </OuterPageContainer>
+    <>
+      <MountedNavbar />
+      <OuterPageContainer>
+        <Form />
+      </OuterPageContainer>
+    </>
   );
 }
