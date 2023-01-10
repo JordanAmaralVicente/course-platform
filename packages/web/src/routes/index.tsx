@@ -3,6 +3,7 @@ import { Autheticated, Guest } from "../components";
 
 import { LoginPage } from "../features/Auth/Login";
 import { RegisterPage } from "../features/Auth/Register";
+import { ChatPage } from "../features/Chat";
 import { CoursePage } from "../features/Course";
 import { CoursesPage } from "../features/Courses";
 import { HomePage } from "../features/Home";
@@ -41,6 +42,14 @@ export const router = createBrowserRouter([
     element: (
       <Autheticated>
         <CoursePage />
+      </Autheticated>
+    ),
+  },
+  {
+    path: "/chat",
+    element: (
+      <Autheticated>
+        <ChatPage />
       </Autheticated>
     ),
   },

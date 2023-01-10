@@ -21,6 +21,7 @@ function sendMessage(
             client.send(
                 JSON.stringify({
                     message,
+                    userId: payload.id,
                     userName: payload.name,
                     userRole: payload.role,
                     userEmail: payload.email,

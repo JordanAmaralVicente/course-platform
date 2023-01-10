@@ -13,6 +13,10 @@ export const MountedNavbar = () => {
           label: "Lista de Cursos",
           link: "/cursos",
         },
+        {
+          label: "CHAT",
+          link: "/chat",
+        },
       ]}
       startButton={{
         label: "Home Page",
