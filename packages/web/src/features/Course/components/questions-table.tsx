@@ -50,6 +50,7 @@ export const QuestionsTable = (props: QuestionsTableProps): JSX.Element => {
         columns={[{ attr: "text", label: "Pergunta" }]}
         rows={props.questions}
         actions={getTableActions()}
+        emptyDataText="Não há perguntas cadastradas para esse curso"
       />
       <RegisterAnswerModal
         isModalOpen={isRegisterAnswerModalOpen}

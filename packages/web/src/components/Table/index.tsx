@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { tableCellClasses } from "@mui/material/TableCell";
 import { ReactNode } from "react";
+import { EmptyResult } from "../EmptyResult";
 
 interface Column {
   label: string;
@@ -25,6 +26,7 @@ interface Action {
 
 interface TableProps {
   rows: any[];
+  emptyDataText: string;
   columns: Column[];
   actions?: Action[];
 }
@@ -86,6 +88,7 @@ export const Table = (props: TableProps): JSX.Element => {
               </TableRow>
             );
           })}
+          {!props.rows.length && <EmptyResult text={props.emptyDataText} />}
         </TableBody>
       </UITable>
     </TableContainer>
