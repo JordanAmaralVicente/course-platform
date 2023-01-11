@@ -4,7 +4,7 @@ import { useSnackbar } from "notistack";
 import { useState } from "react";
 import { Modal } from "../../../components";
 import { Table } from "../../../components/Table";
-import { useAuth } from "../../../hooks/use-auth";
+import { useAuth } from "../../../hooks";
 import { Answer } from "../../../types/answer";
 import { Question } from "../../../types/question";
 import { UserRole } from "../../../types/user-role";

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LinkProps, Navbar } from "../../../components";
-import { useAuth } from "../../../hooks/use-auth";
+import { useAuth } from "../../../hooks";
 import { UserRole } from "../../../types/user-role";
 
 export const MountedNavbar = () => {

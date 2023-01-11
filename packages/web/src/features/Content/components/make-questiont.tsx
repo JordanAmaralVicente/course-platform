@@ -3,7 +3,7 @@ import { Box, FormControl, Modal, styled, TextField } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../../hooks/use-auth";
+import { useAuth } from "../../../hooks";
 import { makeQuestion } from "../api/make-question";
 
 const CustomTextField = styled(TextField)(() => ({

@@ -3,7 +3,7 @@ import { Box, Grid, Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { EmptyResult } from "../../../components/EmptyResult";
-import { useAuth } from "../../../hooks/use-auth";
+import { useAuth } from "../../../hooks";
 import { Content } from "../../../types/content";
 import { ContentCard } from "./content-card";
 

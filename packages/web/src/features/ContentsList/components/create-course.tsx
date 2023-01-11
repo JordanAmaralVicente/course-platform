@@ -1,7 +1,7 @@
 import { Box, Button, styled } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { useState } from "react";
-import { useAuth } from "../../../hooks/use-auth";
+import { useAuth } from "../../../hooks";
 import { Content } from "../../../types/content";
 import { UserRole } from "../../../types/user-role";
 import { createCourse } from "../api/create-course";

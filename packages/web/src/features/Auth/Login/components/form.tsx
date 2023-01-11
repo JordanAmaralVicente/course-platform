@@ -2,7 +2,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { Box, FormControl, styled, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../../../hooks/use-auth";
+import { useAuth } from "../../../../hooks";
 import { LoginDTO, loginValidation } from "../types";
 
 const OuterFormContainer = styled(Box)(({ theme }) => ({

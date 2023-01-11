@@ -2,7 +2,7 @@ import { ArrowBack } from "@mui/icons-material";
 import { Box, Button, styled } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../hooks/use-auth";
+import { useAuth } from "../../../hooks";
 import { UserRole } from "../../../types/user-role";
 import { MakeQuestionModal } from "./make-questiont";
 

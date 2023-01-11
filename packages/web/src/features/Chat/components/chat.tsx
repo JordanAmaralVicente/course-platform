@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { appConfig } from "../../../config";
-import { useAuth } from "../../../hooks/use-auth";
+import { useAuth } from "../../../hooks";
 import { Message, WSPayload, WSReceivedMessage } from "../types";
 import { CommandsInput } from "./commands";
 import { MessageScreen } from "./messages";
