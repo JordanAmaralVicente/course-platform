@@ -1,3 +1,4 @@
+import { LoadingButton } from "@mui/lab";
 import { Box, Button, styled, TextField } from "@mui/material";
 
 export const CenteredContainer = styled(Box)(() => ({
@@ -23,6 +24,7 @@ export const StyledButton = styled(Button)(() => ({
 export const StyledTextField = styled(TextField)(() => ({
   backgroundColor: "white",
   color: "red",
+  margin: "6px",
 
   "& > div > input": {
     padding: "12px",
@@ -34,4 +36,16 @@ export const StyledTextField = styled(TextField)(() => ({
         borderColor: "#38023B",
       },
     },
+}));
+
+export const StyledLoadingButton = styled(LoadingButton)(() => ({
+  fontWeight: "bold",
+  padding: "8px 16px",
+  backgroundColor: "#38023B",
+  color: "#FFFF",
+
+  ":hover": {
+    backgroundColor: "#cfc1f2",
+    color: "#38023B",
+  },
 }));

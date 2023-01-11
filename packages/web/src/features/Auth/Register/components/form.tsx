@@ -1,4 +1,3 @@
-import LoadingButton from "@mui/lab/LoadingButton";
 import {
   Box,
   FormControl,
@@ -6,12 +5,12 @@ import {
   Radio,
   RadioGroup,
   styled,
-  TextField,
   Typography,
 } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { StyledLoadingButton, StyledTextField } from "../../../../components";
 import { UserRole, UserRoles } from "../../../../types/user-role";
 import { registerUser } from "../apis/create-user";
 import { CreateUserDTO, createUserValidation } from "../types";
@@ -33,10 +32,6 @@ const OuterFormContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-const CustomTextField = styled(TextField)(() => ({
-  margin: "6px",
-}));
-
 const DEFAULT_FORM_VALUES = {
   role: UserRole.STUDENT,
   email: "",
@@ -55,6 +50,18 @@ export const Form = (): JSX.Element => {
   const navigate = useNavigate();
 
   const onSubmit = async (data: CreateUserDTO) => {
+    function parseErrorMessageHelper(err: any) {
+      let message: string = err;
+
+      if (err.response) {
+        message = "Algum problema aconteceu com o servidor. Tente mais tarde";
+      } else if (err.request) {
+        message = "Não foi possível se conectar ao servidor";
+      }
+
+      setErrorMessage(message);
+    }
+
     setIsLoading(true);
     setErrorMessage(null);
 
@@ -64,16 +71,8 @@ export const Form = (): JSX.Element => {
       await createUserValidation.validateAsync(parsedData);
       await registerUser(parsedData);
       navigate("/login");
-    } catch (error: any) {
-      if (error.response) {
-        setErrorMessage(
-          "Algum problema aconteceu com o servidor. Tente mais tarde"
-        );
-      } else if (error.request) {
-        setErrorMessage("Não foi possível se conectar ao servidor");
-      } else {
-        setErrorMessage(error);
-      }
+    } catch (error) {
+      parseErrorMessageHelper(error);
     }
 
     setIsLoading(false);
@@ -99,13 +98,13 @@ export const Form = (): JSX.Element => {
         }}
       >
         <FormControl>
-          <CustomTextField {...register("name")} placeholder="Nome" />
+          <StyledTextField {...register("name")} placeholder="Nome" />
         </FormControl>
         <FormControl>
-          <CustomTextField {...register("email")} placeholder="E-mail" />
+          <StyledTextField {...register("email")} placeholder="E-mail" />
         </FormControl>
         <FormControl>
-          <CustomTextField
+          <StyledTextField
             {...register("password")}
             placeholder="Password"
             type="password"
@@ -136,14 +135,14 @@ export const Form = (): JSX.Element => {
             })}
           </RadioGroup>
         </FormControl>
-        <LoadingButton
+        <StyledLoadingButton
           loading={isLoading}
           type="submit"
           variant="contained"
           sx={{ margin: "6px", backgroundColor: "#38023B" }}
         >
           Cadastrar
-        </LoadingButton>
+        </StyledLoadingButton>
         {!!errorMessage && (
           <Typography sx={{ color: "red", margin: "6px", fontWeight: "bold" }}>
             {errorMessage.toString()}

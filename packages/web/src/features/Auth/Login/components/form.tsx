@@ -1,7 +1,7 @@
-import LoadingButton from "@mui/lab/LoadingButton";
-import { Box, FormControl, styled, TextField, Typography } from "@mui/material";
+import { Box, FormControl, styled, Typography } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { StyledLoadingButton, StyledTextField } from "../../../../components";
 import { useAuth } from "../../../../hooks";
 import { LoginDTO, loginValidation } from "../types";
 
@@ -20,10 +20,6 @@ const OuterFormContainer = styled(Box)(({ theme }) => ({
     width: "80%",
     maxWidth: "unset",
   },
-}));
-
-const CustomTextField = styled(TextField)(() => ({
-  margin: "6px",
 }));
 
 export const Form = (): JSX.Element => {
@@ -56,7 +52,7 @@ export const Form = (): JSX.Element => {
         }}
         variant="h4"
       >
-        Login
+        Realizar Login
       </Typography>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -67,23 +63,23 @@ export const Form = (): JSX.Element => {
         }}
       >
         <FormControl>
-          <CustomTextField {...register("email")} placeholder="E-mail" />
+          <StyledTextField {...register("email")} placeholder="E-mail" />
         </FormControl>
         <FormControl>
-          <CustomTextField
+          <StyledTextField
             {...register("password")}
             placeholder="Password"
             type="password"
           />
         </FormControl>
-        <LoadingButton
+        <StyledLoadingButton
           loading={isLoading}
           type="submit"
           variant="contained"
           sx={{ margin: "6px" }}
         >
           Entrar
-        </LoadingButton>
+        </StyledLoadingButton>
       </form>
       {!!errorMessage && (
         <Typography sx={{ color: "red", margin: "6px", fontWeight: "bold" }}>
