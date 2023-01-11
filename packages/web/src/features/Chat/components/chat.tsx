@@ -11,13 +11,12 @@ import {
 } from "./styled-components";
 
 export const Chat = (): JSX.Element => {
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const [messages, setMessages] = useState<Message[]>([]);
   const [ws, setWs] = useState(new WebSocket(appConfig.api.websocketUrl));
-  const [apiAccessToken, setApiAccessToken] = useState<string>();
 
   const handleOnSubmitMessage = async (text: any) => {
-    const wsMessage: WSPayload = { jwtToken: apiAccessToken, message: text };
+    const wsMessage: WSPayload = { jwtToken: token, message: text };
     ws.send(JSON.stringify(wsMessage));
 
     const newMessages: Message[] = [
@@ -54,10 +53,6 @@ export const Chat = (): JSX.Element => {
       };
     };
   }, [ws, ws.onmessage, ws.onopen, ws.onclose, messages]);
-
-  useEffect(() => {
-    setApiAccessToken(localStorage.getItem("apiAccessToken"));
-  }, [user]);
 
   return (
     <>
