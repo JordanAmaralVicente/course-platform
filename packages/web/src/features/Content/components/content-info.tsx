@@ -44,12 +44,6 @@ export const ContentInfo = (props: ContentInfoProps): JSX.Element => {
             </Typography>
           </>
         )}
-        {!!props?.content?.students?.length && (
-          <Typography>
-            <strong>Quantidade de alunos matriculados:</strong>{" "}
-            {props.content?.students?.length}
-          </Typography>
-        )}
       </Box>
     </Paper>
   );
