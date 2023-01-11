@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import App from "./App";
 import { AuthProvider } from "./contexts/auth";
-import "./index.css";
 import { router } from "./routes";
+import "./style/index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
