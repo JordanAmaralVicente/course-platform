@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { MountedNavbar } from "../common";
+import { MountedNavbar } from "../components";
 import { Chat } from "./components/chat";
 
 export function ChatPage(): JSX.Element {

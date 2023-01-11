@@ -1,7 +1,7 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CourseImage from "../../../assets/course.svg";
-import { StyledButton } from "../../../components/common";
+import { StyledButton } from "../../../components/StyledComponents";
 import { useAuth } from "../../../hooks/use-auth";
 
 export const LoginContainer = () => {

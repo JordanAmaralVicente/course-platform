@@ -1,5 +1,5 @@
 import { Box, styled } from "@mui/material";
-import { MountedNavbar } from "../../common";
+import { MountedNavbar } from "../../components";
 import { Form } from "./components";
 
 export const OuterPageContainer = styled(Box)(({ theme }) => ({

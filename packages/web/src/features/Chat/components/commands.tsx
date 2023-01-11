@@ -1,6 +1,9 @@
 import { CircularProgress, InputAdornment } from "@mui/material";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
-import { StyledButton, StyledTextField } from "../../../components/common";
+import {
+  StyledButton,
+  StyledTextField,
+} from "../../../components/StyledComponents";
 import { CommandsContainer } from "./styled-components";
 
 interface CommandsContainerProps {

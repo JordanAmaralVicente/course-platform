@@ -3,4 +3,5 @@ export * from "./Guards";
 export * from "./Modal";
 export * from "./Navbar";
 export * from "./Section";
+export * from "./StyledComponents";
 export * from "./Table";

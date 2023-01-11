@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Content } from "../../types/content";
-import { MountedNavbar } from "../common";
+import { MountedNavbar } from "../components";
 import { getContents } from "./api/get-contents";
 import { ContentsGrid } from "./components/contents-grid";
 import { CreateCourse } from "./components/create-course";

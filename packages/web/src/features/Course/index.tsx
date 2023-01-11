@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Content } from "../../types/content";
 import { Question } from "../../types/question";
-import { MountedNavbar } from "../common";
+import { MountedNavbar } from "../components";
 import { getContentInfo } from "./api/get-content-info";
 import { getQuestionByContentId } from "./api/get-questions-by-content";
 import { ContentInfo } from "./components/content-info";
