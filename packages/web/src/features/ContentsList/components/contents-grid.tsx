@@ -3,7 +3,6 @@ import { Box, Grid, Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { EmptyResult } from "../../../components/EmptyResult";
-import { useAuth } from "../../../hooks";
 import { Content } from "../../../types/content";
 import { ContentCard } from "./content-card";
 
@@ -14,7 +13,6 @@ interface ContentsGridProps {
 }
 
 export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
-  const { user } = useAuth();
   const navigate = useNavigate();
   const [paginatedContents, setPaginatedContents] = useState<Content[]>([]);
   const [numberOfPages, setNumberOfPages] = useState(0);
