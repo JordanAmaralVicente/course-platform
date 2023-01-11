@@ -1,11 +1,10 @@
-import { Delete, Edit, RemoveRedEye } from "@mui/icons-material";
+import { RemoveRedEye } from "@mui/icons-material";
 import { Box, Grid, Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { EmptyResult } from "../../../components/EmptyResult";
 import { useAuth } from "../../../hooks/use-auth";
 import { Content } from "../../../types/content";
-import { ContentCardAction } from "../types";
 import { ContentCard } from "./content-card";
 
 const MAX_CONTENTS_PER_PAGE = 8;
@@ -49,10 +48,20 @@ export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
       {!!paginatedContents.length && (
         <Grid sx={{ margin: "24px 0" }} container spacing={2}>
           {paginatedContents.map((content, idx) => {
-            const actions = insertTeacherActionsOnContentActions(content);
             return (
               <Grid key={idx} item>
-                <ContentCard content={content} actions={actions} />
+                <ContentCard
+                  content={content}
+                  actions={[
+                    {
+                      element: <RemoveRedEye />,
+                      label: "Visualizar",
+                      onClick: () => {
+                        navigate(`/curso/${content.id}`);
+                      },
+                    },
+                  ]}
+                />
               </Grid>
             );
           })}
@@ -71,35 +80,4 @@ export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
       )}
     </>
   );
-
-  function insertTeacherActionsOnContentActions(content: Content) {
-    const actions: ContentCardAction[] = [
-      {
-        element: <RemoveRedEye />,
-        label: "Visualizar",
-        onClick: () => {
-          navigate(`/curso/${content.id}`);
-        },
-      },
-    ];
-
-    if (user.id === content?.teacher?.id) {
-      const teacherActions: ContentCardAction[] = [
-        {
-          element: <Edit />,
-          label: "Editar",
-          onClick: () => {},
-        },
-        {
-          element: <Delete />,
-          label: "Deletar",
-          onClick: () => {},
-        },
-      ];
-
-      actions.push(...teacherActions);
-    }
-
-    return actions;
-  }
 };
