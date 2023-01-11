@@ -1,5 +1,7 @@
 import { User } from "../../types/user";
 
+export const API_ACCESS_TOKEN_STORAGE_KEY = "apiAccessToken";
+
 export interface LoginDTO {
   email: string;
   password: string;

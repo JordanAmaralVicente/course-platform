@@ -1,6 +1,5 @@
 import { Action, AuthState, InitializeAction, LoginAction } from "./types";
 
-// TODO: type action funtion
 const handlers: Record<string, any> = {
   INITIALIZE: (state: AuthState, action: InitializeAction): AuthState => {
     const { isAuthenticated, user, token } = action.payload;
