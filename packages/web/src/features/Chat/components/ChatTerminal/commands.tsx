@@ -3,8 +3,8 @@ import { ChangeEvent, KeyboardEvent, useState } from "react";
 import {
   StyledButton,
   StyledTextField,
-} from "../../../components/StyledComponents";
-import { CommandsContainer } from "./styled-components";
+} from "../../../../components/StyledComponents";
+import { CommandsContainer } from "../styled-components";
 
 interface CommandsContainerProps {
   onSendCommand: (command: string) => any;

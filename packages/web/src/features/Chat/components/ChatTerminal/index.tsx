@@ -1,16 +1,16 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
-import { appConfig } from "../../../config";
-import { useAuth } from "../../../hooks";
-import { Message, WSPayload, WSReceivedMessage } from "../types";
-import { CommandsInput } from "./commands";
-import { MessageScreen } from "./messages";
+import { appConfig } from "../../../../config";
+import { useAuth } from "../../../../hooks";
+import { Message, WSPayload, WSReceivedMessage } from "../../types";
 import {
   TerminalInnerContainer,
   TerminalOuterContainer,
-} from "./styled-components";
+} from "../styled-components";
+import { CommandsInput } from "./commands";
+import { MessageScreen } from "./messages";
 
-export const Chat = (): JSX.Element => {
+export const ChatTerminal = (): JSX.Element => {
   const { user, token } = useAuth();
   const [messages, setMessages] = useState<Message[]>([]);
   const [ws, setWs] = useState(new WebSocket(appConfig.api.websocketUrl));
@@ -28,30 +28,34 @@ export const Chat = (): JSX.Element => {
   };
 
   useEffect(() => {
-    ws.onopen = () => {
-      console.info("Conexão aberta!");
-    };
+    const initializeWebSocketService = () => {
+      ws.onopen = () => {
+        console.info("Conexão aberta!");
+      };
 
-    ws.onmessage = (e) => {
-      const payload: WSReceivedMessage = JSON.parse(e.data as string);
-      const newMessages: Message[] = [...messages];
+      ws.onmessage = (e) => {
+        const payload: WSReceivedMessage = JSON.parse(e.data as string);
+        const newMessages: Message[] = [...messages];
 
-      newMessages.push({
-        message: payload.message,
-        type: "received",
-        userName: payload.userName,
-        userRole: payload.userRole,
-      });
+        newMessages.push({
+          message: payload.message,
+          type: "received",
+          userName: payload.userName,
+          userRole: payload.userRole,
+        });
 
-      setMessages(newMessages);
-    };
+        setMessages(newMessages);
+      };
 
-    return () => {
-      ws.onclose = () => {
-        console.info("Conexão fechada!");
-        setWs(new WebSocket(appConfig.api.websocketUrl));
+      return () => {
+        ws.onclose = () => {
+          console.info("Conexão fechada!");
+          setWs(new WebSocket(appConfig.api.websocketUrl));
+        };
       };
     };
+
+    return initializeWebSocketService();
   }, [ws, ws.onmessage, ws.onopen, ws.onclose, messages]);
 
   return (

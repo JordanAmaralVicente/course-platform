@@ -1,10 +1,10 @@
 import { Typography } from "@mui/material";
-import { UserRoleLabelMap } from "../../../types/user-role";
-import { Message } from "../types";
+import { UserRoleLabelMap } from "../../../../types/user-role";
+import { Message } from "../../types";
 import {
   MessageComponentContainer,
   MessageComponentInnerContainer,
-} from "./styled-components";
+} from "../styled-components";
 
 interface MessageComponentProps {
   message: Message;
