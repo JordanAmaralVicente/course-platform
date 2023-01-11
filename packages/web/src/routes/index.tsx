@@ -4,8 +4,8 @@ import { Autheticated, Guest, TeacherGuard } from "../components";
 import { LoginPage } from "../features/Auth/Login";
 import { RegisterPage } from "../features/Auth/Register";
 import { ChatPage } from "../features/Chat";
-import { CoursePage } from "../features/Course";
-import { CoursesPage } from "../features/Courses";
+import { ContentPage } from "../features/Content";
+import { ContentsListPage } from "../features/ContentsList";
 import { HomePage } from "../features/Home";
 
 export const router = createBrowserRouter([
@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
     path: "/cursos",
     element: (
       <Autheticated>
-        <CoursesPage />
+        <ContentsListPage />
       </Autheticated>
     ),
   },
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
     path: "/curso/:id",
     element: (
       <Autheticated>
-        <CoursePage />
+        <ContentPage />
       </Autheticated>
     ),
   },

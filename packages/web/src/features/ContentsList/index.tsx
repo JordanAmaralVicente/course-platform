@@ -6,7 +6,7 @@ import { getContents } from "./api/get-contents";
 import { ContentsGrid } from "./components/contents-grid";
 import { CreateCourse } from "./components/create-course";
 
-export function CoursesPage(): JSX.Element {
+export function ContentsListPage(): JSX.Element {
   const [contents, setContents] = useState<Content[]>([]);
 
   useEffect(() => {

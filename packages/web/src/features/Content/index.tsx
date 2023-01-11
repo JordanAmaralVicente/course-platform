@@ -10,7 +10,7 @@ import { ContentInfo } from "./components/content-info";
 import { FunctionalitiesContainer } from "./components/functionalities-container";
 import { QuestionsTable } from "./components/questions-table";
 
-export function CoursePage(): JSX.Element {
+export function ContentPage(): JSX.Element {
   const location = useLocation();
   const [content, setContent] = useState<Content>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
