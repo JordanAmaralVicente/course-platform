@@ -26,6 +26,7 @@ const CustomButton = styled(Button)(({ theme }) => ({
 
 interface FunctionalitiesContainerProps {
   contentId: string;
+  onQuestionMade: (contentId: string) => void;
 }
 
 export const FunctionalitiesContainer = (
@@ -73,6 +74,7 @@ export const FunctionalitiesContainer = (
         contentId={props.contentId}
         isModalOpen={isModalOpen}
         onCloseModal={handleOnClickCloseModal}
+        onQuestionMade={props.onQuestionMade}
       />
     </>
   );

@@ -15,16 +15,23 @@ export function ContentPage(): JSX.Element {
   const [content, setContent] = useState<Content>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
 
-  useEffect(() => {
-    const contentId = location.pathname.split("curso/")[1];
-
-    getContentInfo(contentId).then((content) => {
-      setContent(content);
-    });
-
+  const fetchQuestions = async (contentId: string) => {
     getQuestionByContentId(contentId).then((questions) => {
       setQuestions(questions);
     });
+  };
+
+  const fetchContentInfo = async (contentId: string) => {
+    getContentInfo(contentId).then((content) => {
+      setContent(content);
+    });
+  };
+
+  useEffect(() => {
+    const contentId = location.pathname.split("curso/")[1];
+
+    fetchContentInfo(contentId);
+    fetchQuestions(contentId);
   }, [location]);
 
   return (
@@ -38,7 +45,10 @@ export function ContentPage(): JSX.Element {
         }}
       >
         <Typography variant="h4">Informações acerca do conteúdo</Typography>
-        <FunctionalitiesContainer contentId={content?.id} />
+        <FunctionalitiesContainer
+          contentId={content?.id}
+          onQuestionMade={fetchQuestions}
+        />
         <ContentInfo content={content} />
         <QuestionsTable questions={questions} />
       </Box>

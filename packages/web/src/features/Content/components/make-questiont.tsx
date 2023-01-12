@@ -33,6 +33,7 @@ interface MakeQuestionModalProps {
   contentId: string;
   isModalOpen: boolean;
   onCloseModal: () => void;
+  onQuestionMade: (contentId: string) => void;
 }
 
 export const MakeQuestionModal = (
@@ -67,6 +68,8 @@ export const MakeQuestionModal = (
 
       reset();
       props.onCloseModal();
+
+      props.onQuestionMade(props.contentId);
     } catch (error: any) {
       let message = "Não foi possível realizar a ação";
 
