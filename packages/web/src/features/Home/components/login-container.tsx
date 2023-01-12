@@ -10,7 +10,6 @@ export const LoginContainer = () => {
   const standardTheme = useTheme();
   const navigate = useNavigate();
   const isMobile = useIsMobile();
-  const i = CourseImage;
 
   return (
     <Box
