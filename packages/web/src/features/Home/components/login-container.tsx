@@ -1,15 +1,12 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import CourseImage from "../../../assets/course.svg";
 import { StyledButton } from "../../../components/StyledComponents";
 import { useAuth } from "../../../hooks";
-import useIsMobile from "../../../hooks/use-is-mobile";
 
 export const LoginContainer = () => {
   const { user } = useAuth();
   const standardTheme = useTheme();
   const navigate = useNavigate();
-  const isMobile = useIsMobile();
 
   return (
     <Box
@@ -30,20 +27,15 @@ export const LoginContainer = () => {
         },
       }}
     >
-      <img
+      {/* <img
         src={CourseImage}
         alt="course"
-        width={isMobile ? 256 : ""}
-        height={isMobile ? 256 : ""}
-        style={{
-          [standardTheme.breakpoints.down("sm")]: {
-            width: "256px",
-            height: "256px",
-          },
-        }}
-      />
+        width={isMobile ? "256px" : "572px"}
+        height={isMobile ? "256px" : "572px"}
+      /> */}
       <Box
         sx={{
+          boxSizing: "border-box",
           backgroundColor: "white",
           maxWidth: "400px",
           padding: "24px",

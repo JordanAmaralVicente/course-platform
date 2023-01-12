@@ -12,6 +12,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
+    padding: "0",
   },
 }));
 

@@ -1,8 +1,10 @@
-import { Box } from "@mui/system";
+import { Box, useTheme } from "@mui/material";
 import { StyledTypography } from "./styled-components";
 import { WhatWeHave } from "./what-we-have";
 
 export const WhatsHere = (): JSX.Element => {
+  const theme = useTheme();
+
   return (
     <Box
       sx={{
@@ -13,7 +15,16 @@ export const WhatsHere = (): JSX.Element => {
         flexDirection: "column",
       }}
     >
-      <StyledTypography sx={{ fontSize: "64px", color: "black" }}>
+      <StyledTypography
+        sx={{
+          fontSize: "64px",
+          color: "black",
+          [theme.breakpoints.down("sm")]: {
+            margin: 0,
+            fontSize: "32px",
+          },
+        }}
+      >
         Do que esse projeto se trata ?
       </StyledTypography>
       <Box
@@ -23,17 +34,35 @@ export const WhatsHere = (): JSX.Element => {
           flexDirection: "column",
         }}
       >
-        <StyledTypography sx={{ color: "black", padding: "0 128px" }}>
+        <StyledTypography
+          sx={{
+            color: "black",
+            padding: "0 128px",
+            [theme.breakpoints.down("sm")]: { padding: "16px" },
+          }}
+        >
           Esse site basicamente visa unir dois tipos de usuários diferentes.
           Sendo eles, alunos e professores. Sendo que o professor é uma figura
           central no aprendizado e algumas coisas que ele pode fazer é a
           produção de conteúdo e atendimento de dúvidas de alunos.
         </StyledTypography>
-        <StyledTypography sx={{ color: "black", padding: "0 128px" }}>
+        <StyledTypography
+          sx={{
+            color: "black",
+            padding: "0 128px",
+            [theme.breakpoints.down("sm")]: { padding: "16px" },
+          }}
+        >
           Um aluno pode ficar com alguma dúvida e realizar uma pergunta ao
           professor!
         </StyledTypography>
-        <StyledTypography sx={{ color: "black", padding: "0 128px" }}>
+        <StyledTypography
+          sx={{
+            color: "black",
+            padding: "0 128px",
+            [theme.breakpoints.down("sm")]: { padding: "16px" },
+          }}
+        >
           Olhando do ponto de vista técnico esse projeto utiliza:
           <ul>
             <li>
@@ -45,7 +74,17 @@ export const WhatsHere = (): JSX.Element => {
           </ul>
         </StyledTypography>
       </Box>
-      <StyledTypography sx={{ fontSize: "64px", color: "black" }}>
+      <StyledTypography
+        sx={{
+          fontSize: "64px",
+          color: "black",
+          [theme.breakpoints.down("sm")]: {
+            fontSize: "32px",
+            padding: "32px 8px 8px",
+            fontWeight: "bold",
+          },
+        }}
+      >
         O que você encontra aqui ? E o que vem depois ?
       </StyledTypography>
       <WhatWeHave
