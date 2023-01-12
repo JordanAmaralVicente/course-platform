@@ -119,6 +119,13 @@ O payload, principalmente para identificação do usuário e para autenticação
 $ npm run build && npm run start
 ```
 
+## Deploy da aplicação
+O deploy da aplicação está sendo feito manualmente e os principais fatores que levaram a isso foi a visibilidade do repositório ser pública, o que deixa algumas coisas muito vulneráveis e também pelo fato de que a máquina é possui uma configuração bem básica. Mas aqui vais umas especificações:
+
+- Back-end e Front-end rodando na AWS em uma instância EC2 utilizando `pm2` para possibilitar a execução dos servidores em uma mesma máquina como serviços  
+- Banco de Dados MySQL rodando em uma instância da RDS
+
+
 ## Algumas Imagens do Projeto:
 Página Principal
 ![image](https://user-images.githubusercontent.com/42154494/212138659-f320c39e-6d13-4918-b3a5-7e5be76a2263.png)
