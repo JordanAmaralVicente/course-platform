@@ -13,7 +13,7 @@ export const ContentCard = (props: ContentCardProps): JSX.Element => {
       sx={{
         padding: "16px",
         width: "256px",
-        height: "128px",
+        height: "146px",
       }}
     >
       <Box
@@ -34,7 +34,7 @@ export const ContentCard = (props: ContentCardProps): JSX.Element => {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-around",
-          marginTop: "16px",
+          margin: "16px 0 8px",
         }}
       >
         {props.actions?.map((action, index) => (

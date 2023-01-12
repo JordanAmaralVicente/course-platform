@@ -1,3 +1,4 @@
+import SendIcon from "@mui/icons-material/Send";
 import { CircularProgress, InputAdornment } from "@mui/material";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 import {
@@ -51,6 +52,7 @@ export const CommandsInput = (props: CommandsContainerProps) => {
               {props.isSending && (
                 <CircularProgress size={24} sx={{ color: "grey" }} />
               )}
+              {!props.isSending && <SendIcon />}
             </InputAdornment>
           ),
         }}

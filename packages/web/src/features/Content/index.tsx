@@ -35,7 +35,7 @@ export function ContentPage(): JSX.Element {
   }, [location]);
 
   return (
-    <>
+    <Box sx={{ paddingBottom: "64px" }}>
       <MountedNavbar />
       <Box
         sx={{
@@ -52,6 +52,6 @@ export function ContentPage(): JSX.Element {
         <ContentInfo content={content} />
         <QuestionsTable questions={questions} />
       </Box>
-    </>
+    </Box>
   );
 }

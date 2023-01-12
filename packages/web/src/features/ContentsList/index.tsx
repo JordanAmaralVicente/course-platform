@@ -20,7 +20,7 @@ export function ContentsListPage(): JSX.Element {
   }, []);
 
   return (
-    <>
+    <Box sx={{ paddingBottom: "64px" }}>
       <MountedNavbar />
       <Box
         sx={{
@@ -33,6 +33,6 @@ export function ContentsListPage(): JSX.Element {
         <CreateCourse onCreateCourse={fetchContentsList} />
         <ContentsGrid contents={contents} />
       </Box>
-    </>
+    </Box>
   );
 }
