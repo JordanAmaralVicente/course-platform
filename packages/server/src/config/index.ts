@@ -46,13 +46,13 @@ export const serverConfig: ServerConfig = {
             entities: [
                 parseEnvStr(
                     "TYPEORM_ENTITIES",
-                    "src/databases/typeorm/entities/**/*.ts",
+                    "build/**/databases/typeorm/entities/**/*.ts",
                 ),
             ],
             migrations: [
                 parseEnvStr(
                     "TYPEORM_MIGRATIONS",
-                    "src/databases/typeorm/migrations/**/*.ts",
+                    "build/**/databases/typeorm/migrations/**/*.ts",
                 ),
             ],
         },
