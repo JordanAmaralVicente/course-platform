@@ -9,10 +9,14 @@ import { CreateCourse } from "./components/create-course";
 export function ContentsListPage(): JSX.Element {
   const [contents, setContents] = useState<Content[]>([]);
 
-  useEffect(() => {
+  const fetchContentsList = async () => {
     getContents().then((result) => {
       setContents(result);
     });
+  };
+
+  useEffect(() => {
+    fetchContentsList();
   }, []);
 
   return (
@@ -26,7 +30,7 @@ export function ContentsListPage(): JSX.Element {
         }}
       >
         <Typography variant="h4">Cursos</Typography>
-        <CreateCourse />
+        <CreateCourse onCreateCourse={fetchContentsList} />
         <ContentsGrid contents={contents} />
       </Box>
     </>

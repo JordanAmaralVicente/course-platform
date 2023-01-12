@@ -1,31 +1,18 @@
-import { Box, Button, styled } from "@mui/material";
+import { Box } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { useState } from "react";
+import { StyledButton } from "../../../components";
 import { useAuth } from "../../../hooks";
 import { Content } from "../../../types/content";
 import { UserRole } from "../../../types/user-role";
 import { createCourse } from "../api/create-course";
 import { CreateCourseModal } from "./create-course-modal";
 
-const CustomButton = styled(Button)(({ theme }) => ({
-  fontWeight: "bold",
-  margin: "0 8px",
-  backgroundColor: "#38023B",
-  color: "white",
+interface CreateCourseProps {
+  onCreateCourse: () => void;
+}
 
-  "&:hover": {
-    backgroundColor: "#A288E3",
-  },
-
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "12px",
-    justifyContent: "center",
-    margin: 0,
-    lineHeight: "14px",
-  },
-}));
-
-export const CreateCourse = (): JSX.Element => {
+export const CreateCourse = (props: CreateCourseProps): JSX.Element => {
   const { user } = useAuth();
   const { enqueueSnackbar } = useSnackbar();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,6 +31,8 @@ export const CreateCourse = (): JSX.Element => {
       enqueueSnackbar("Conteúdo cadastrado com sucesso!", {
         variant: "success",
       });
+
+      props.onCreateCourse();
     } catch (error) {
       enqueueSnackbar("Não foi possível cadastrar o conteúdo", {
         variant: "error",
@@ -65,12 +54,12 @@ export const CreateCourse = (): JSX.Element => {
               justifyContent: "flex-end",
             }}
           >
-            <CustomButton
+            <StyledButton
               variant="contained"
               onClick={handleOnClickCreateCourse}
             >
               Cadastrar Curso
-            </CustomButton>
+            </StyledButton>
           </Box>
           <CreateCourseModal
             isModalOpen={isModalOpen}

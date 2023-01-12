@@ -16,6 +16,7 @@ export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
   const navigate = useNavigate();
   const [paginatedContents, setPaginatedContents] = useState<Content[]>([]);
   const [numberOfPages, setNumberOfPages] = useState(0);
+  const [page, setPage] = useState(1);
 
   // NOTE: its index-1 based
   function paginateContents(page: number) {
@@ -26,6 +27,7 @@ export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
       start + MAX_CONTENTS_PER_PAGE
     );
 
+    setPage(page);
     setPaginatedContents(slicedContents);
   }
 
@@ -34,6 +36,7 @@ export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
       const pages = Math.ceil(props.contents.length / MAX_CONTENTS_PER_PAGE);
 
       setNumberOfPages(pages);
+      setPage(1);
       setPaginatedContents(props.contents.slice(0, MAX_CONTENTS_PER_PAGE));
     }
   }, [props.contents]);
@@ -68,6 +71,7 @@ export const ContentsGrid = (props: ContentsGridProps): JSX.Element => {
       {!!props?.contents?.length && (
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Pagination
+            page={page}
             count={numberOfPages}
             color="secondary"
             onChange={(_, selectedPage: number) => {
