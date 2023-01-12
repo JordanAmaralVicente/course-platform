@@ -85,6 +85,24 @@ Com isso ele já fará tudo que é necessário para rodar o servidor.
 ### Web - Front-End
 O Front-end foi feito utilizando `React.js` e também resolvi usar o Material UI pois ele contém muitas coisas já implementadas, o que auxilia a focar nas partes que realmente importam.
 
+Explicando um pouco acerca da estrutura:
+- assets: contém imagens do projeto
+- components: pasta com components genéricos para serem consumidos pelas páginas
+- contexts: contém os contexts do projeto, nesse, somente context de autenticação
+- features: pasta com as páginas do projeto
+  - home: página principal
+  - contents list: Página que contém a listagem de conteúdos
+  - content: página do contéudo em que é possível fazer e responder as perguntas
+  - chat: página com a aba de chat para os usuários
+  - auth:
+    - login: página para realizar login
+    - cadastro: página para um professor cadastrar outro professor ou um aluno
+- hooks: pasta que contém os hooks, aqui: is-mobile para verificar se o dispositivo é mobile ou não e o hook de autenticação
+- routes: usado para fazer o roteamento das páginas, nesse projeto estou usando react-router-dom
+- styles: possui somente um arquivo de estilo global
+- types: no geral contém interfaces
+- utils: pasta com funções que podem ser úteis no projeto no geral
+
 #### Rodando o servidor web:
 Para rodar o servidor web, na pasta packages/web, rodar:
 
