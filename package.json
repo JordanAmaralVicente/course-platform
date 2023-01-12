@@ -1,8 +1,6 @@
 {
-  "name": "architects-hub",
-  "version": "0.0.0",
-  "description": "",
-  "main": "",
+  "name": "course-platform",
+  "version": "1.0.0",
   "scripts": {
     
     "start:docker": "docker-compose -f docker/docker-compose.yml up --build",
