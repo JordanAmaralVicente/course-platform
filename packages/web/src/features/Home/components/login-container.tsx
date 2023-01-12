@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import CourseImage from "../../../assets/course.svg";
 import { StyledButton } from "../../../components/StyledComponents";
 import { useAuth } from "../../../hooks";
+import useIsMobile from "../../../hooks/use-is-mobile";
 
 export const LoginContainer = () => {
   const { user } = useAuth();
   const standardTheme = useTheme();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   return (
     <Box
@@ -20,9 +22,26 @@ export const LoginContainer = () => {
         backgroundColor: "#38023B",
         borderRadius: "16px",
         paddingBottom: "32px",
+
+        [standardTheme.breakpoints.down("sm")]: {
+          flexDirection: "column",
+          marginTop: "-64px",
+          zIndex: 1,
+        },
       }}
     >
-      <img src={CourseImage} alt="course" />
+      <img
+        src={CourseImage}
+        alt="course"
+        width={isMobile ? 256 : ""}
+        height={isMobile ? 256 : ""}
+        style={{
+          [standardTheme.breakpoints.down("sm")]: {
+            width: "256px",
+            height: "256px",
+          },
+        }}
+      />
       <Box
         sx={{
           backgroundColor: "white",
