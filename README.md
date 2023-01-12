@@ -103,9 +103,27 @@ Explicando um pouco acerca da estrutura:
 - types: no geral contém interfaces
 - utils: pasta com funções que podem ser úteis no projeto no geral
 
+## Chat
+O chat foi feito utilizando WebSocket.
+
 #### Rodando o servidor web:
-Para rodar o servidor web, na pasta packages/web, rodar:
+Para rodar o servidor web, na pasta packages/web, rodar. No Servidor foi criado um service para fazer todos o broadcast das mensagens e autenticação do usuário. Já no Front-End foi necessário somente fazer as chamadas aos servidor.
+
+O payload, principalmente para identificação do usuário e para autenticação, contém algumas informações:
+- token jwt para autenticação
+- messagem que está sendo enviada
+- nome e função do usuário
+
 
 ```bash
 $ npm run build && npm run start
 ```
+
+## Algumas Imagens do Projeto:
+Página Principal
+![image](https://user-images.githubusercontent.com/42154494/212138659-f320c39e-6d13-4918-b3a5-7e5be76a2263.png)
+![image](https://user-images.githubusercontent.com/42154494/212138794-5f1fa028-0c7e-47aa-aefe-5e894462c8f5.png)
+
+Página de Chat:
+![image](https://user-images.githubusercontent.com/42154494/212139122-6716a093-0ea9-4136-97b9-0b29b50943a6.png)
+![image](https://user-images.githubusercontent.com/42154494/212139195-a69d164c-7297-4b60-9ec5-3467f78278ce.png)
